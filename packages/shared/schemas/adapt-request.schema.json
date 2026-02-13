@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://culturebridge.ai/schemas/adapt-request.json",
+    "title": "AdaptRequest",
+    "description": "Request body for POST /api/adapt — triggers multi-agent cultural adaptation.",
+    "type": "object",
+    "required": [
+        "country_code",
+        "product_category",
+        "price_band",
+        "audience"
+    ],
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "enum": [
+                "JP",
+                "GT",
+                "DE"
+            ],
+            "description": "Target region for adaptation"
+        },
+        "product_category": {
+            "type": "string",
+            "enum": [
+                "electronics",
+                "fashion",
+                "food_beverage",
+                "home_garden",
+                "health_beauty"
+            ]
+        },
+        "price_band": {
+            "type": "string",
+            "enum": [
+                "budget",
+                "mid",
+                "premium",
+                "luxury"
+            ]
+        },
+        "audience": {
+            "type": "string",
+            "enum": [
+                "general_consumer",
+                "tech_enthusiast",
+                "young_adult",
+                "professional",
+                "family"
+            ]
+        },
+        "override_dimensions": {
+            "type": "object",
+            "description": "Optional manual overrides for cultural dimensions (0-100)",
+            "properties": {
+                "uncertainty_avoidance": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "collectivism": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "authority_distance": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "context_level": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "price_sensitivity": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "trust_need": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "friction_tolerance": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

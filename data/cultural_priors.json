@@ -1,0 +1,363 @@
+{
+    "cultural_priors": {
+        "JP": {
+            "country_name": "Japan",
+            "dimensions": {
+                "uncertainty_avoidance": 82,
+                "collectivism": 78,
+                "authority_distance": 54,
+                "context_level": 85,
+                "price_sensitivity": 45,
+                "trust_need": 88,
+                "friction_tolerance": 72
+            },
+            "evidence": [
+                {
+                    "source": "Hofstede Cultural Dimensions Framework (theoretical adaptation)",
+                    "description": "Japan scores high on Uncertainty Avoidance Index (92 in original framework). Adapted to e-commerce behavioral context considering digital maturity."
+                },
+                {
+                    "source": "Hall's High-Context/Low-Context Communication Model",
+                    "description": "Japan is a canonical high-context culture where implicit communication and contextual cues are preferred over explicit detailed information."
+                },
+                {
+                    "source": "UNCTAD B2C E-Commerce Index / World Bank Digital Reports",
+                    "description": "Japan's mature e-commerce market suggests higher friction tolerance (users accustomed to multi-step processes) and strong trust requirements."
+                }
+            ],
+            "notes": "These are theoretical priors derived from cultural dimension frameworks and publicly available market reports. Individual consumer behavior varies significantly. Values represent population-level tendencies, not prescriptive characteristics. Japan's digital commerce maturity means consumers accept structured processes but demand reliability."
+        },
+        "GT": {
+            "country_name": "Guatemala",
+            "dimensions": {
+                "uncertainty_avoidance": 55,
+                "collectivism": 72,
+                "authority_distance": 68,
+                "context_level": 70,
+                "price_sensitivity": 82,
+                "trust_need": 75,
+                "friction_tolerance": 35
+            },
+            "evidence": [
+                {
+                    "source": "Hofstede Cultural Dimensions Framework (Latin American cluster)",
+                    "description": "As part of the Latin American cultural cluster, Guatemala shows moderate-to-high collectivism and authority distance. UAI adapted downward reflecting pragmatic flexibility in emerging digital markets."
+                },
+                {
+                    "source": "World Bank Financial Inclusion Database",
+                    "description": "Lower financial inclusion rates suggest higher price sensitivity and importance of alternative payment methods and installment options."
+                },
+                {
+                    "source": "GSMA Mobile Economy Latin America",
+                    "description": "High mobile commerce adoption in Guatemala with preference for streamlined, lower-friction mobile-optimized experiences."
+                }
+            ],
+            "notes": "Guatemala has limited country-specific cultural dimension research. Values are estimated from Latin American regional studies and market conditions. The high price sensitivity reflects economic context rather than cultural preference. Low friction tolerance reflects mobile-first commerce patterns and varying connectivity."
+        },
+        "DE": {
+            "country_name": "Germany",
+            "dimensions": {
+                "uncertainty_avoidance": 75,
+                "collectivism": 25,
+                "authority_distance": 30,
+                "context_level": 20,
+                "price_sensitivity": 55,
+                "trust_need": 70,
+                "friction_tolerance": 65
+            },
+            "evidence": [
+                {
+                    "source": "Hofstede Cultural Dimensions Framework",
+                    "description": "Germany scores high on Uncertainty Avoidance (65) and low on Collectivism (33 IDV inverted). Strong Individualism drives self-directed decision-making."
+                },
+                {
+                    "source": "Hall's High-Context/Low-Context Communication Model",
+                    "description": "Germany is a canonical low-context culture preferring explicit, detailed, and precise communication. Specifications, terms, and technical details are expected upfront."
+                },
+                {
+                    "source": "European E-Commerce Report / Statista Digital Market Outlook",
+                    "description": "German consumers are known for thorough pre-purchase research, high return rates (indicating careful evaluation), and preference for invoice payment methods."
+                }
+            ],
+            "notes": "Germany has well-researched cultural dimensions. However, these values represent population-level tendencies. Germany's strong consumer protection laws and Stiftung Warentest culture drive trust through institutional mechanisms rather than social proof. The moderate price sensitivity reflects value-consciousness rather than economic constraint."
+        }
+    },
+    "product_baselines": {
+        "electronics": {
+            "product_category": "electronics",
+            "price_band": "mid",
+            "audience": "general_consumer",
+            "baseline_flow": [
+                {
+                    "step_id": "browse",
+                    "name": "Product Browse",
+                    "description": "User views product listing with images, price, and brief description",
+                    "required_fields": [],
+                    "validations": []
+                },
+                {
+                    "step_id": "detail",
+                    "name": "Product Detail",
+                    "description": "Detailed product page with specs, reviews, and add-to-cart",
+                    "required_fields": [],
+                    "validations": []
+                },
+                {
+                    "step_id": "cart",
+                    "name": "Shopping Cart",
+                    "description": "Cart review with quantities, prices, and proceed to checkout",
+                    "required_fields": [],
+                    "validations": [
+                        "min_cart_value"
+                    ]
+                },
+                {
+                    "step_id": "shipping",
+                    "name": "Shipping Information",
+                    "description": "Enter shipping address and select delivery method",
+                    "required_fields": [
+                        "full_name",
+                        "address",
+                        "city",
+                        "postal_code",
+                        "country"
+                    ],
+                    "validations": [
+                        "address_format",
+                        "postal_code_format"
+                    ]
+                },
+                {
+                    "step_id": "payment",
+                    "name": "Payment",
+                    "description": "Enter payment details and review order total",
+                    "required_fields": [
+                        "payment_method",
+                        "card_number",
+                        "expiry",
+                        "cvv"
+                    ],
+                    "validations": [
+                        "card_valid",
+                        "sufficient_funds"
+                    ]
+                },
+                {
+                    "step_id": "confirm",
+                    "name": "Order Confirmation",
+                    "description": "Review and confirm the complete order",
+                    "required_fields": [],
+                    "validations": []
+                }
+            ],
+            "baseline_modules": {
+                "reviews": {
+                    "enabled": true,
+                    "placement": "below_fold",
+                    "style": "stars"
+                },
+                "guarantees": {
+                    "enabled": true,
+                    "types": [
+                        "30-day returns",
+                        "manufacturer warranty"
+                    ]
+                },
+                "shipping_info": {
+                    "enabled": true,
+                    "placement": "product_detail",
+                    "detail_level": "standard"
+                },
+                "returns": {
+                    "enabled": true,
+                    "prominence": "medium"
+                },
+                "payment_options": {
+                    "enabled": true,
+                    "show_installments": false,
+                    "show_local_methods": false
+                }
+            },
+            "baseline_copy": {
+                "cta_primary": "Add to Cart",
+                "cta_secondary": "Save for Later",
+                "value_proposition": "High-quality electronics at competitive prices",
+                "urgency_text": "Limited stock available",
+                "social_proof_text": "Join thousands of satisfied customers"
+            }
+        },
+        "fashion": {
+            "product_category": "fashion",
+            "price_band": "mid",
+            "audience": "young_adult",
+            "baseline_flow": [
+                {
+                    "step_id": "browse",
+                    "name": "Collection Browse",
+                    "description": "Visual grid of fashion items with quick-view",
+                    "required_fields": [],
+                    "validations": []
+                },
+                {
+                    "step_id": "detail",
+                    "name": "Product Detail",
+                    "description": "Product page with size guide, materials, and styling suggestions",
+                    "required_fields": [
+                        "size",
+                        "color"
+                    ],
+                    "validations": [
+                        "size_availability"
+                    ]
+                },
+                {
+                    "step_id": "cart",
+                    "name": "Shopping Bag",
+                    "description": "Bag review with size/color confirmation",
+                    "required_fields": [],
+                    "validations": []
+                },
+                {
+                    "step_id": "checkout",
+                    "name": "Express Checkout",
+                    "description": "Combined shipping + payment in a single step",
+                    "required_fields": [
+                        "full_name",
+                        "address",
+                        "payment_method"
+                    ],
+                    "validations": [
+                        "address_format"
+                    ]
+                },
+                {
+                    "step_id": "confirm",
+                    "name": "Order Confirmation",
+                    "description": "Order summary with tracking info",
+                    "required_fields": [],
+                    "validations": []
+                }
+            ],
+            "baseline_modules": {
+                "reviews": {
+                    "enabled": true,
+                    "placement": "below_fold",
+                    "style": "community"
+                },
+                "guarantees": {
+                    "enabled": true,
+                    "types": [
+                        "free returns",
+                        "authenticity guarantee"
+                    ]
+                },
+                "shipping_info": {
+                    "enabled": true,
+                    "placement": "product_detail",
+                    "detail_level": "minimal"
+                },
+                "returns": {
+                    "enabled": true,
+                    "prominence": "high"
+                },
+                "payment_options": {
+                    "enabled": true,
+                    "show_installments": true,
+                    "show_local_methods": false
+                }
+            },
+            "baseline_copy": {
+                "cta_primary": "Add to Bag",
+                "cta_secondary": "Add to Wishlist",
+                "value_proposition": "Trend-forward styles delivered to your door",
+                "urgency_text": "Selling fast — only a few left in your size",
+                "social_proof_text": "Loved by fashion-forward shoppers worldwide"
+            }
+        }
+    },
+    "dimension_ux_mapping": {
+        "description": "Explicit mapping from cultural dimensions to UX adaptation rules. Each rule maps a dimension threshold to a specific UX change with rationale.",
+        "rules": [
+            {
+                "rule_id": "UA_HIGH_TRUST",
+                "dimension": "uncertainty_avoidance",
+                "condition": ">=70",
+                "effect": "increase_trust_modules",
+                "details": "Enable and promote guarantees, certifications, detailed return policies. Move shipping/returns info above the fold.",
+                "rationale": "High uncertainty avoidance correlates with need for risk reduction signals in purchase decisions."
+            },
+            {
+                "rule_id": "UA_HIGH_CLARITY",
+                "dimension": "uncertainty_avoidance",
+                "condition": ">=70",
+                "effect": "increase_process_clarity",
+                "details": "Add progress indicators to checkout, show order summary at each step, add confirmation prompts.",
+                "rationale": "Structured, predictable processes reduce anxiety for uncertainty-averse consumers."
+            },
+            {
+                "rule_id": "CTX_LOW_EXPLICIT",
+                "dimension": "context_level",
+                "condition": "<=35",
+                "effect": "increase_explicit_info",
+                "details": "Show detailed specs, pricing breakdowns, and terms earlier in the flow. Use precise language over suggestive copy.",
+                "rationale": "Low-context communicators need explicit, detailed information to make informed decisions."
+            },
+            {
+                "rule_id": "COL_HIGH_SOCIAL",
+                "dimension": "collectivism",
+                "condition": ">=65",
+                "effect": "increase_social_proof",
+                "details": "Promote community reviews, add 'popular choice' badges, show purchase counts, enable community Q&A.",
+                "rationale": "Collectivist orientations value group validation and consensus in purchase decisions."
+            },
+            {
+                "rule_id": "FRIC_LOW_STREAMLINE",
+                "dimension": "friction_tolerance",
+                "condition": "<=40",
+                "effect": "reduce_checkout_steps",
+                "details": "Combine shipping + payment into single step, enable guest checkout, minimize required fields, add autofill.",
+                "rationale": "Low friction tolerance requires streamlined experiences to prevent cart abandonment."
+            },
+            {
+                "rule_id": "TRUST_HIGH_GUARANTEES",
+                "dimension": "trust_need",
+                "condition": ">=75",
+                "effect": "enhance_guarantees",
+                "details": "Add trust badges, certifications, money-back guarantees, secure payment indicators prominently.",
+                "rationale": "High trust need requires visible trust-building elements before purchase commitment."
+            },
+            {
+                "rule_id": "PRICE_HIGH_VALUE",
+                "dimension": "price_sensitivity",
+                "condition": ">=70",
+                "effect": "value_framing",
+                "details": "Show price comparisons, enable installment options, emphasize value/savings, add price-match guarantees.",
+                "rationale": "Price-sensitive markets require value justification and flexible payment options."
+            },
+            {
+                "rule_id": "AUTH_HIGH_EXPERT",
+                "dimension": "authority_distance",
+                "condition": ">=60",
+                "effect": "add_authority_signals",
+                "details": "Feature expert endorsements, brand authority statements, official certifications, and quality awards.",
+                "rationale": "High authority distance correlates with trust in expert/institutional endorsements over peer reviews."
+            },
+            {
+                "rule_id": "CTX_HIGH_IMPLICIT",
+                "dimension": "context_level",
+                "condition": ">=70",
+                "effect": "ambient_information",
+                "details": "Use visual cues, contextual information, and suggestive copy. Reduce text density, use more imagery.",
+                "rationale": "High-context communicators prefer indirect, contextual information over explicit detail dumps."
+            },
+            {
+                "rule_id": "COL_LOW_INDIVIDUAL",
+                "dimension": "collectivism",
+                "condition": "<=35",
+                "effect": "individual_framing",
+                "details": "Frame CTAs around individual benefit ('Your perfect choice'), personalized recommendations, 'curated for you' messaging.",
+                "rationale": "Individualist orientations respond to personal benefit framing over group consensus."
+            }
+        ]
+    }
+}

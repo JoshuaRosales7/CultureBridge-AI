@@ -1,0 +1,199 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://culturebridge.ai/schemas/storefront-base-spec.json",
+    "title": "StorefrontBaseSpec",
+    "description": "Base storefront configuration that serves as the starting point for cultural adaptation.",
+    "type": "object",
+    "required": [
+        "product_category",
+        "price_band",
+        "audience",
+        "baseline_flow",
+        "baseline_modules",
+        "baseline_copy"
+    ],
+    "properties": {
+        "product_category": {
+            "type": "string",
+            "enum": [
+                "electronics",
+                "fashion",
+                "food_beverage",
+                "home_garden",
+                "health_beauty"
+            ],
+            "description": "Product category for the storefront"
+        },
+        "price_band": {
+            "type": "string",
+            "enum": [
+                "budget",
+                "mid",
+                "premium",
+                "luxury"
+            ],
+            "description": "Price positioning of the product"
+        },
+        "audience": {
+            "type": "string",
+            "enum": [
+                "general_consumer",
+                "tech_enthusiast",
+                "young_adult",
+                "professional",
+                "family"
+            ],
+            "description": "Target audience segment"
+        },
+        "baseline_flow": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "step_id",
+                    "name",
+                    "description"
+                ],
+                "properties": {
+                    "step_id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "required_fields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "validations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "description": "Ordered checkout/purchase flow steps"
+        },
+        "baseline_modules": {
+            "type": "object",
+            "properties": {
+                "reviews": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "placement": {
+                            "type": "string",
+                            "enum": [
+                                "above_fold",
+                                "below_fold",
+                                "sidebar",
+                                "tab"
+                            ]
+                        },
+                        "style": {
+                            "type": "string",
+                            "enum": [
+                                "stars",
+                                "detailed",
+                                "community",
+                                "expert"
+                            ]
+                        }
+                    }
+                },
+                "guarantees": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "types": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "shipping_info": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "placement": {
+                            "type": "string"
+                        },
+                        "detail_level": {
+                            "type": "string",
+                            "enum": [
+                                "minimal",
+                                "standard",
+                                "detailed"
+                            ]
+                        }
+                    }
+                },
+                "returns": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "prominence": {
+                            "type": "string",
+                            "enum": [
+                                "low",
+                                "medium",
+                                "high"
+                            ]
+                        }
+                    }
+                },
+                "payment_options": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "show_installments": {
+                            "type": "boolean"
+                        },
+                        "show_local_methods": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "baseline_copy": {
+            "type": "object",
+            "properties": {
+                "cta_primary": {
+                    "type": "string"
+                },
+                "cta_secondary": {
+                    "type": "string"
+                },
+                "value_proposition": {
+                    "type": "string"
+                },
+                "urgency_text": {
+                    "type": "string"
+                },
+                "social_proof_text": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

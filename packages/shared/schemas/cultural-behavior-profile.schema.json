@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://culturebridge.ai/schemas/cultural-behavior-profile.json",
+  "title": "CulturalBehaviorProfile",
+  "description": "Behavioral dimension profile for a target region, used to drive UX adaptation decisions.",
+  "type": "object",
+  "required": ["country_code", "dimensions", "evidence", "notes"],
+  "properties": {
+    "country_code": {
+      "type": "string",
+      "enum": ["JP", "GT", "DE"],
+      "description": "ISO 3166-1 alpha-2 country code"
+    },
+    "dimensions": {
+      "type": "object",
+      "required": [
+        "uncertainty_avoidance",
+        "collectivism",
+        "authority_distance",
+        "context_level",
+        "price_sensitivity",
+        "trust_need",
+        "friction_tolerance"
+      ],
+      "properties": {
+        "uncertainty_avoidance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Degree to which uncertainty and ambiguity are threatening. High = need for clear rules, guarantees, structured processes."
+        },
+        "collectivism": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Degree to which group harmony and social proof influence decisions. High = strong community/social validation needs."
+        },
+        "authority_distance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Acceptance of hierarchical authority and expert endorsements. High = authority/expert signals are persuasive."
+        },
+        "context_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Communication context dependency. High = implicit communication preferred; Low = explicit, detailed information needed."
+        },
+        "price_sensitivity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Degree of price-consciousness in purchase decisions. High = value framing and comparisons are important."
+        },
+        "trust_need": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Baseline trust requirement before purchase. High = more trust-building elements needed (guarantees, certifications)."
+        },
+        "friction_tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Tolerance for steps/complexity in purchase flow. High = accepts more steps; Low = needs streamlined flow."
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "description"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source reference (framework name, report title, etc.)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of what this source supports"
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "List of evidence sources supporting the dimension values"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Constraints, caveats, and limitations of this profile"
+    }
+  },
+  "additionalProperties": false
+}

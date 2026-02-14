@@ -8,16 +8,28 @@
 
 ---
 
-## 🎯 Problem
+## 🎯 The Problem
 
-International e-commerce loses **20-40% conversion** when expanding into new markets — not because of language, but because of **culturally misaligned decision flows and trust signals**. A checkout flow optimized for Germany (explicit specs, structured process) fails in Guatemala (relationship-first, flexible payments) and Japan (consensus cues, uncertainty reduction).
+International e-commerce loses **20-40% conversion** when expanding into new markets — not because of language barriers, but due to **culturally misaligned decision flows and trust signals**. 
+
+A checkout flow optimized for Germany (explicit specs, structured process) fails in Guatemala (relationship-first, flexible payments) and Japan (consensus cues, uncertainty reduction).
 
 **CultureBridge AI** uses multi-agent AI orchestration to analyze cultural behavioral dimensions and generate region-adapted storefront variants with **explainable predicted conversion lift**.
 
 ---
 
-## 🏗️ Architecture
+## ✨ Key Features
 
+- 🧠 **Multi-Agent Architecture** — Five specialized AI agents working in orchestration
+- 🌐 **Dimension-Driven Adaptation** — Cultural intelligence based on behavioral research, not stereotypes
+- 🔍 **Bias Auditing** — Built-in compliance and fairness validation
+- 📊 **Explainable AI** — Every recommendation includes transparent rationale
+- ☁️ **Azure-Native** — Production-ready deployment with enterprise security
+- 🚀 **Real-Time Generation** — Adaptive variants in seconds
+
+---
+
+## 🏗️ Architecture
 ```mermaid
 graph TB
     subgraph "Frontend - Next.js"
@@ -66,13 +78,15 @@ graph TB
     API --> AI
 ```
 
-> **[Full architecture diagram →](docs/architecture.md)**
+📖 **[View detailed architecture →](docs/architecture.md)**
 
 ---
 
 ## 🧠 How It Works
 
-### Multi-Agent Orchestration (Real, Not Decorative)
+### Multi-Agent Orchestration
+
+Each agent is a specialized AI component with a distinct responsibility:
 
 | Agent | Role | Input | Output |
 |-------|------|-------|--------|
@@ -82,22 +96,22 @@ graph TB
 | **Compliance & Bias Auditor** | Check for stereotyping, require dimension-based justification | All agent outputs | Audit score, risk flags, recommended changes |
 | **Experimentation** | Generate predicted lift model + A/B test plan | Complete variant spec | Predicted conversion lift with transparent assumptions |
 
-Each agent returns **structured JSON with a `rationale` field** explaining its reasoning.
+Every agent returns **structured JSON with a `rationale` field** explaining its reasoning — ensuring transparency and auditability.
 
 ### Cultural Model (Explainable)
 
-We use a **dimension-driven approach** — not stereotypes:
+We use a **dimension-driven approach** based on behavioral research, not stereotypes:
 
 | Dimension | Effect on UX |
 |-----------|-------------|
-| High `uncertainty_avoidance` | More trust modules, clearer shipping/returns, fewer surprises |
-| Low `context_level` | Explicit specs and pricing details shown earlier |
-| High `collectivism` | Stronger social proof (reviews, community endorsements) |
-| Low `friction_tolerance` | Fewer checkout steps, autofill, minimal form fields |
-| High `trust_need` | Guarantees, certifications, authority signals prominent |
-| High `price_sensitivity` | Value framing, comparison tools, installment options |
+| **Uncertainty Avoidance** | Higher scores → more trust modules, clearer shipping/returns policies, fewer surprises |
+| **Context Level** | Lower scores → explicit specs and pricing details shown earlier in the flow |
+| **Collectivism** | Higher scores → stronger social proof (reviews, community endorsements, testimonials) |
+| **Friction Tolerance** | Lower scores → fewer checkout steps, autofill, minimal form fields |
+| **Trust Need** | Higher scores → guarantees, certifications, authority signals placed prominently |
+| **Price Sensitivity** | Higher scores → value framing, comparison tools, installment payment options |
 
-> **[Full cultural model documentation →](docs/cultural-model.md)**
+📖 **[Read full cultural model documentation →](docs/cultural-model.md)**
 
 ---
 
@@ -110,14 +124,18 @@ We use a **dimension-driven approach** — not stereotypes:
 - **Azure CLI** (for deployment)
 - **Azure OpenAI** resource (or AI Foundry endpoint)
 
-### Environment Variables
-
+### 1. Clone the Repository
 ```bash
-# Copy and configure
+git clone https://github.com/YOUR_ORG/culturebridge-ai.git
+cd culturebridge-ai
+```
+
+### 2. Configure Environment
+```bash
 cp .env.example .env
 ```
 
-Required variables:
+Edit `.env` with your Azure credentials:
 ```env
 AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
 AZURE_OPENAI_API_KEY=your-key
@@ -126,35 +144,53 @@ AZURE_OPENAI_API_VERSION=2024-10-21
 APPLICATIONINSIGHTS_CONNECTION_STRING=your-connection-string
 ```
 
-### Local Development
-
+### 3. Install Dependencies
 ```bash
-# Install dependencies
-pnpm install              # Frontend
-cd apps/api && pip install -r requirements.txt  # Backend
+# Frontend
+pnpm install
 
-# Run everything
-pnpm dev                  # Starts Next.js on :3000
-cd apps/api && uvicorn main:app --reload --port 8000  # API on :8000
+# Backend
+cd apps/api
+pip install -r requirements.txt
+```
 
-# Or use Docker Compose
+### 4. Run Development Servers
+```bash
+# Terminal 1 - Frontend (port 3000)
+pnpm dev
+
+# Terminal 2 - Backend (port 8000)
+cd apps/api
+uvicorn main:app --reload --port 8000
+```
+
+**Or use Docker Compose:**
+```bash
 docker-compose up --build
 ```
 
-### Run Tests
+### 5. Access the Application
 
+- **Frontend:** http://localhost:3000
+- **API Docs:** http://localhost:8000/docs
+
+### 6. Run Tests
 ```bash
-cd apps/api && python -m pytest tests/ -v
+cd apps/api
+python -m pytest tests/ -v
 ```
 
 ---
 
 ## 📦 API Reference
 
-### `POST /api/adapt`
+### Generate Adapted Variant
+```http
+POST /api/adapt
+Content-Type: application/json
+```
 
-Generate a culturally adapted variant for a product + region.
-
+**Request Body:**
 ```json
 {
   "country_code": "JP",
@@ -167,26 +203,43 @@ Generate a culturally adapted variant for a product + region.
 }
 ```
 
-### `GET /api/variants/{variant_id}`
+**Response:**
+```json
+{
+  "variant_id": "var_abc123",
+  "cultural_profile": { /* ... */ },
+  "ux_adaptations": { /* ... */ },
+  "copy_variants": { /* ... */ },
+  "predicted_lift": 0.23,
+  "audit_score": 0.92
+}
+```
 
-Retrieve a previously generated variant specification.
+### Retrieve Variant
+```http
+GET /api/variants/{variant_id}
+```
 
-### `POST /api/audit`
+### Audit Variant
+```http
+POST /api/audit
+Content-Type: application/json
+```
 
-Run a compliance and bias audit on a variant.
-
+**Request Body:**
 ```json
 {
   "variant_id": "var_abc123"
 }
 ```
 
+📖 **[Full API documentation →](docs/api-reference.md)**
+
 ---
 
 ## ☁️ Azure Deployment
 
-### One-Click Deploy
-
+### Option 1: One-Click Deploy
 ```bash
 # Login to Azure
 az login
@@ -198,50 +251,84 @@ az deployment group create \
   --template-file main.bicep \
   --parameters @parameters.json
 
-# Deploy via GitHub Actions (push to main)
+# Deploy application via GitHub Actions
 git push origin main
 ```
 
-### Infrastructure (Bicep)
+### Option 2: GitHub Actions CI/CD
 
-| Resource | Purpose |
-|----------|---------|
-| Azure OpenAI | LLM inference via AI Foundry |
-| Azure Functions | API hosting |
-| Azure Static Web Apps | Frontend hosting |
-| Key Vault | Secrets management |
-| Application Insights | Observability + trace correlation |
+Push to `main` branch to trigger automated deployment. The workflow:
 
-> **[Threat model →](docs/threat-model.md)**
+1. Builds frontend and API containers
+2. Runs tests and security scans
+3. Deploys to Azure Static Web Apps + Functions/Container Apps
+4. Updates Application Insights configuration
 
----
+### Infrastructure Components
 
-## 🎬 Demo Script (2 Minutes)
+| Resource | Purpose | Config |
+|----------|---------|--------|
+| **Azure OpenAI** | LLM inference via AI Foundry | GPT-4o deployment |
+| **Azure Functions** | Serverless API hosting | Python 3.11 runtime |
+| **Static Web Apps** | Next.js frontend hosting | CDN + custom domains |
+| **Key Vault** | Secrets management | Managed identity access |
+| **Application Insights** | Observability + distributed tracing | Correlation IDs enabled |
 
-| Time | Action |
-|------|--------|
-| 0:00–0:20 | Show the problem: same storefront, different regions, lost conversions |
-| 0:20–1:10 | Live: select product → generate JP/GT/DE variants → side-by-side comparison |
-| 1:10–1:35 | Show compliance audit: score, risk flags, quick fix |
-| 1:35–1:55 | Show Azure deployment + App Insights trace |
-| 1:55–2:00 | Close: predicted lift summary + enterprise readiness |
-
-> **[Full demo script →](docs/demo-script.md)**
+🔒 **[View threat model & security →](docs/threat-model.md)**
 
 ---
 
-## 🤖 GitHub Copilot Usage
+## 🎬 2-Minute Demo Script
 
-This project was developed using **GitHub Copilot Agent Mode** in VS Code. Key areas where Copilot accelerated development:
+| Time | Action | What to Show |
+|------|--------|--------------|
+| **0:00–0:20** | Introduce the problem | Same storefront → different regions → conversion drop |
+| **0:20–1:10** | Generate variants | Select product → generate JP/GT/DE variants → side-by-side comparison UI |
+| **1:10–1:35** | Show compliance audit | Audit score, risk flags, dimension-based justifications |
+| **1:35–1:55** | Show Azure integration | Deployment architecture + App Insights trace correlation |
+| **1:55–2:00** | Conclusion | Predicted lift summary + enterprise readiness highlights |
 
-1. **Schema Generation**: Copilot generated initial JSON Schema definitions from TypeScript interfaces, then refined with manual review for domain accuracy.
-2. **Agent Prompt Engineering**: Copilot suggested system prompt structures for each agent role; we refined to ensure dimension-driven (not stereotype-driven) outputs.
-3. **Bicep Templates**: Copilot generated base IaC templates; we added security hardening (managed identity, private endpoints).
-4. **Test Cases**: Copilot generated test scaffolding for cultural dimension mapping rules; we added edge cases and bias detection tests.
-5. **FastAPI Route Handlers**: Copilot accelerated boilerplate API code; we added correlation ID middleware and structured error handling.
-6. **React Components**: Copilot assisted with the variant comparison UI; manual refinement for accessibility and responsive design.
+📖 **[Full demo script with screenshots →](docs/demo-script.md)**
 
-> Copilot was used as an accelerator, not a replacement for domain expertise. All AI-generated code was reviewed for correctness, security, and bias.
+---
+
+## 🤖 Built with GitHub Copilot
+
+This project leveraged **GitHub Copilot Agent Mode** in VS Code to accelerate development:
+
+### What Copilot Helped With
+
+1. **Schema Generation** — Generated initial JSON Schema definitions from TypeScript interfaces
+2. **Agent Prompt Engineering** — Suggested system prompt structures for each specialized agent
+3. **Infrastructure as Code** — Generated base Bicep templates for Azure resources
+4. **Test Scaffolding** — Created test cases for cultural dimension mapping and bias detection
+5. **API Boilerplate** — Accelerated FastAPI route handlers and middleware
+6. **UI Components** — Assisted with React component structure and Tailwind styling
+
+### Human Review Process
+
+All AI-generated code was reviewed for:
+- ✅ Correctness and domain accuracy
+- ✅ Security best practices
+- ✅ Bias and fairness concerns
+- ✅ Accessibility compliance
+
+> **Copilot was used as an accelerator, not a replacement for domain expertise.**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes and add tests
+4. Run tests and linting (`pnpm test`, `pnpm lint`)
+5. Commit with conventional commits (`feat:`, `fix:`, `docs:`)
+6. Push and create a Pull Request
 
 ---
 
@@ -249,25 +336,46 @@ This project was developed using **GitHub Copilot Agent Mode** in VS Code. Key a
 
 | Name | Role | GitHub |
 |------|------|--------|
-| [Joshua Rosales] | Full-Stack Lead | [@handle] |
-| [Jonathan] | AI/ML Engineer | [@handle] |
-| [Jose Medina] | UX/Frontend | [@handle] |
+| Joshua Rosales | Full-Stack Lead | [@handle] |
+| Jonathan | AI/ML Engineer | [@handle] |
+| Jose Medina | UX/Frontend | [@handle] |
 
+---
+
+## 📚 Documentation
+
+- [Architecture Overview](docs/architecture.md)
+- [Cultural Model & Dimensions](docs/cultural-model.md)
+- [Responsible AI Statement](docs/responsible-ai.md)
+- [API Reference](docs/api-reference.md)
+- [Threat Model & Security](docs/threat-model.md)
+- [Demo Script](docs/demo-script.md)
+- [Deployment Guide](docs/deployment.md)
 
 ---
 
 ## 📄 License
 
-MIT — see [LICENSE](LICENSE).
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🔗 Links
+## 🙏 Acknowledgments
 
-- [Architecture Diagram](docs/architecture.md)
-- [Cultural Model Documentation](docs/cultural-model.md)
-- [Responsible AI Statement](docs/responsible-ai.md)
-- [Threat Model](docs/threat-model.md)
-- [Demo Script](docs/demo-script.md)
-- [Contributing Guide](CONTRIBUTING.md)
-- [Security Policy](SECURITY.md)
+- Built with [Microsoft Agent Framework](https://github.com/microsoft/semantic-kernel)
+- Powered by [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
+- Cultural dimensions research based on Hofstede, Hall, and Meyer frameworks
+
+---
+
+<p align="center">
+  <strong>Made with ❤️ for global commerce</strong>
+</p>
+
+<p align="center">
+  <a href="#-the-problem">Problem</a> •
+  <a href="#-how-it-works">How It Works</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-azure-deployment">Deploy</a> •
+  <a href="#-documentation">Docs</a>
+</p>

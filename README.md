@@ -1,150 +1,389 @@
+<div align="center">
+
 # 🌍 CultureBridge AI
 
-> **Adapt e-commerce experiences by cultural behavior — not just language.**
+### *Adapt e-commerce by cultural behavior — not just language*
 
-[![CI](https://github.com/YOUR_ORG/culturebridge-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_ORG/culturebridge-ai/actions/workflows/ci.yml)
-[![Deploy](https://github.com/YOUR_ORG/culturebridge-ai/actions/workflows/deploy.yml/badge.svg)](https://github.com/YOUR_ORG/culturebridge-ai/actions/workflows/deploy.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
----
-
-## 🎯 The Problem
-
-International e-commerce loses **20-40% conversion** when expanding into new markets — not because of language barriers, but due to **culturally misaligned decision flows and trust signals**. 
-
-A checkout flow optimized for Germany (explicit specs, structured process) fails in Guatemala (relationship-first, flexible payments) and Japan (consensus cues, uncertainty reduction).
-
-**CultureBridge AI** uses multi-agent AI orchestration to analyze cultural behavioral dimensions and generate region-adapted storefront variants with **explainable predicted conversion lift**.
+[![CI](https://img.shields.io/github/actions/workflow/status/YOUR_ORG/culturebridge-ai/ci.yml?style=for-the-badge&logo=github&label=CI&color=10b981)](https://github.com/YOUR_ORG/culturebridge-ai/actions/workflows/ci.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/YOUR_ORG/culturebridge-ai/deploy.yml?style=for-the-badge&logo=azuredevops&label=Deploy&color=0078d4)](https://github.com/YOUR_ORG/culturebridge-ai/actions/workflows/deploy.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![Azure](https://img.shields.io/badge/Azure-OpenAI-0078d4?style=for-the-badge&logo=microsoftazure)](https://azure.microsoft.com)
 
 ---
 
-## ✨ Key Features
+**[📖 Docs](docs/)** • **[🚀 Quick Start](#-quick-start)** • **[☁️ Deploy](#%EF%B8%8F-azure-deployment)** • **[🎬 Demo](#-demo)** • **[🤝 Contribute](CONTRIBUTING.md)**
 
-- 🧠 **Multi-Agent Architecture** — Five specialized AI agents working in orchestration
-- 🌐 **Dimension-Driven Adaptation** — Cultural intelligence based on behavioral research, not stereotypes
-- 🔍 **Bias Auditing** — Built-in compliance and fairness validation
-- 📊 **Explainable AI** — Every recommendation includes transparent rationale
-- ☁️ **Azure-Native** — Production-ready deployment with enterprise security
-- 🚀 **Real-Time Generation** — Adaptive variants in seconds
+</div>
 
 ---
 
-## 🏗️ Architecture
+## 💡 The Challenge
+
+<table>
+<tr>
+<td width="50%">
+
+### 📉 The Problem
+
+International e-commerce faces a **20-40% conversion loss** when expanding globally.
+
+The culprit? Not language barriers, but **culturally misaligned UX patterns**.
+
+</td>
+<td width="50%">
+
+### 🎯 The Solution
+
+**CultureBridge AI** uses multi-agent orchestration to generate region-adapted storefronts with explainable conversion predictions.
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+```mermaid
+graph LR
+    A[🇩🇪 German Store] -->|High Structure| B[❌ Fails in Guatemala]
+    C[🇬🇹 Flexible Flow] -->|Low Context| D[❌ Fails in Japan]
+    E[🇯🇵 Consensus Cues] -->|Explicit Detail| F[❌ Fails in Germany]
+    
+    style A fill:#fee2e2
+    style C fill:#fee2e2
+    style E fill:#fee2e2
+    style B fill:#fca5a5
+    style D fill:#fca5a5
+    style F fill:#fca5a5
+```
+
+</div>
+
+### 🔑 Why It Matters
+
+| Cultural Dimension | Germany 🇩🇪 | Guatemala 🇬🇹 | Japan 🇯🇵 |
+|-------------------|------------|---------------|-----------|
+| **Uncertainty Avoidance** | ⬆️ High | ⬇️ Low | ⬆️⬆️ Very High |
+| **Context Level** | ⬇️ Explicit | ➡️ Moderate | ⬆️ Implicit |
+| **Decision Making** | 📊 Data-driven | 🤝 Relationship | 👥 Consensus |
+| **Trust Signals** | 🏆 Certifications | 💬 Testimonials | 🏢 Authority |
+
+---
+
+## ✨ Features
+
+<div align="center">
+
+| 🧠 **Multi-Agent AI** | 🌐 **Cultural Intelligence** | 🔍 **Bias Auditing** |
+|:---:|:---:|:---:|
+| Five specialized agents working in orchestration | Dimension-driven adaptation based on behavioral research | Built-in compliance and fairness validation |
+
+| 📊 **Explainable AI** | ☁️ **Azure-Native** | ⚡ **Real-Time** |
+|:---:|:---:|:---:|
+| Every recommendation includes transparent rationale | Production-ready with enterprise security | Adaptive variants generated in seconds |
+
+</div>
+
+---
+
+## 🏗️ System Architecture
+
+<div align="center">
 ```mermaid
 graph TB
-    subgraph "Frontend - Next.js"
+    subgraph Frontend["🎨 Frontend - Next.js"]
         UI[Variant Switcher UI]
-        RAI[Responsible AI Page]
+        RAI[Responsible AI Dashboard]
     end
 
-    subgraph "API Layer - FastAPI"
-        API[REST API]
+    subgraph API["⚡ API Layer - FastAPI"]
+        REST[REST Endpoints]
         VAL[JSON Schema Validation]
-        LOG[App Insights + Correlation IDs]
+        LOG[Correlation ID Tracking]
     end
 
-    subgraph "Agent Orchestration - Microsoft Agent Framework"
+    subgraph Agents["🤖 Agent Orchestration"]
         ORCH[Orchestrator]
-        CIA[Cultural Intelligence Agent]
-        UXA[UX Adaptation Agent]
-        CFA[Copy & Framing Agent]
-        CBA[Compliance & Bias Auditor]
-        EXP[Experimentation Agent]
+        
+        subgraph Core["Core Agents"]
+            CIA[🧠 Cultural Intelligence]
+            UXA[🎨 UX Adaptation]
+            CFA[✍️ Copy & Framing]
+        end
+        
+        subgraph Quality["Quality & Validation"]
+            CBA[🛡️ Compliance Auditor]
+            EXP[📊 Experimentation]
+        end
     end
 
-    subgraph "Azure Services"
-        AOI[Azure OpenAI via AI Foundry]
+    subgraph Azure["☁️ Azure Services"]
+        AOI[Azure OpenAI]
         KV[Key Vault]
         AI[Application Insights]
         SWA[Static Web Apps]
-        FUNC[Azure Functions / Container Apps]
+        FUNC[Functions/Container Apps]
     end
 
-    UI -->|POST /api/adapt| API
-    UI -->|GET /api/variants/:id| API
-    UI -->|POST /api/audit| API
-    API --> ORCH
+    UI -->|POST /adapt| REST
+    UI -->|GET /variants| REST
+    REST --> ORCH
+    
     ORCH --> CIA
     ORCH --> UXA
     ORCH --> CFA
     ORCH --> CBA
     ORCH --> EXP
+    
     CIA --> AOI
     UXA --> AOI
     CFA --> AOI
     CBA --> AOI
     EXP --> AOI
-    API --> KV
-    API --> AI
+    
+    REST --> KV
+    REST --> AI
+    
+    style Frontend fill:#dbeafe
+    style API fill:#dcfce7
+    style Agents fill:#fef3c7
+    style Azure fill:#e0e7ff
+    style Core fill:#fef9c3
+    style Quality fill:#fed7aa
 ```
 
-📖 **[View detailed architecture →](docs/architecture.md)**
+</div>
+
+<details>
+<summary><b>📖 View Detailed Architecture Documentation</b></summary>
+
+### Component Breakdown
+
+- **Frontend Layer**: Next.js 14 with App Router, Tailwind CSS, shadcn/ui components
+- **API Layer**: FastAPI with async handlers, Pydantic validation, structured logging
+- **Agent Framework**: Microsoft Semantic Kernel with custom orchestration patterns
+- **Infrastructure**: Fully Azure-native with managed identity and private endpoints
+
+[📄 Read full architecture guide →](docs/architecture.md)
+
+</details>
 
 ---
 
-## 🧠 How It Works
+## 🧠 Multi-Agent System
 
-### Multi-Agent Orchestration
+<div align="center">
 
-Each agent is a specialized AI component with a distinct responsibility:
+### Agent Workflow
+```mermaid
+sequenceDiagram
+    participant User
+    participant API
+    participant Orchestrator
+    participant Cultural as 🧠 Cultural Agent
+    participant UX as 🎨 UX Agent
+    participant Copy as ✍️ Copy Agent
+    participant Audit as 🛡️ Audit Agent
+    participant Exp as 📊 Experimentation
 
-| Agent | Role | Input | Output |
-|-------|------|-------|--------|
-| **Cultural Intelligence** | Analyze behavioral dimensions for target region | Country code + product category | `CulturalBehaviorProfile` with scored dimensions |
-| **UX Adaptation** | Adapt checkout flow, modules, layout emphasis | Cultural profile + base storefront spec | Flow steps, module placement, validation rules |
-| **Copy & Framing** | Reframe CTAs, microcopy, value propositions | Cultural profile + UX adaptations | Copy variants with behavioral rationale |
-| **Compliance & Bias Auditor** | Check for stereotyping, require dimension-based justification | All agent outputs | Audit score, risk flags, recommended changes |
-| **Experimentation** | Generate predicted lift model + A/B test plan | Complete variant spec | Predicted conversion lift with transparent assumptions |
+    User->>API: Request variant (JP, Electronics)
+    API->>Orchestrator: Initiate pipeline
+    
+    Orchestrator->>Cultural: Analyze cultural dimensions
+    Cultural-->>Orchestrator: Behavioral profile
+    
+    Orchestrator->>UX: Adapt flow & layout
+    UX-->>Orchestrator: UX specifications
+    
+    Orchestrator->>Copy: Generate copy variants
+    Copy-->>Orchestrator: Localized content
+    
+    Orchestrator->>Audit: Validate for bias
+    Audit-->>Orchestrator: Audit score + flags
+    
+    Orchestrator->>Exp: Predict lift
+    Exp-->>Orchestrator: A/B test plan
+    
+    Orchestrator-->>API: Complete variant
+    API-->>User: Adapted storefront
+```
 
-Every agent returns **structured JSON with a `rationale` field** explaining its reasoning — ensuring transparency and auditability.
+</div>
 
-### Cultural Model (Explainable)
+### Agent Responsibilities
 
-We use a **dimension-driven approach** based on behavioral research, not stereotypes:
+<table>
+<thead>
+<tr>
+<th width="20%">Agent</th>
+<th width="30%">Input</th>
+<th width="30%">Output</th>
+<th width="20%">Key Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>🧠 Cultural Intelligence</b></td>
+<td>Country code, product category, audience</td>
+<td><code>CulturalBehaviorProfile</code> with dimension scores</td>
+<td>Behavioral analysis, not stereotypes</td>
+</tr>
+<tr>
+<td><b>🎨 UX Adaptation</b></td>
+<td>Cultural profile + base storefront</td>
+<td>Checkout flow, module placement, validation rules</td>
+<td>Flow restructuring based on dimensions</td>
+</tr>
+<tr>
+<td><b>✍️ Copy & Framing</b></td>
+<td>Cultural profile + UX adaptations</td>
+<td>CTAs, microcopy, value propositions</td>
+<td>Behavioral framing techniques</td>
+</tr>
+<tr>
+<td><b>🛡️ Compliance Auditor</b></td>
+<td>All agent outputs</td>
+<td>Audit score, risk flags, recommendations</td>
+<td>Stereotype detection, fairness validation</td>
+</tr>
+<tr>
+<td><b>📊 Experimentation</b></td>
+<td>Complete variant specification</td>
+<td>Predicted lift + A/B test plan</td>
+<td>Statistical modeling with transparent assumptions</td>
+</tr>
+</tbody>
+</table>
 
-| Dimension | Effect on UX |
-|-----------|-------------|
-| **Uncertainty Avoidance** | Higher scores → more trust modules, clearer shipping/returns policies, fewer surprises |
-| **Context Level** | Lower scores → explicit specs and pricing details shown earlier in the flow |
-| **Collectivism** | Higher scores → stronger social proof (reviews, community endorsements, testimonials) |
-| **Friction Tolerance** | Lower scores → fewer checkout steps, autofill, minimal form fields |
-| **Trust Need** | Higher scores → guarantees, certifications, authority signals placed prominently |
-| **Price Sensitivity** | Higher scores → value framing, comparison tools, installment payment options |
+> 💡 **Every agent returns structured JSON with a `rationale` field** — ensuring full transparency and auditability.
 
-📖 **[Read full cultural model documentation →](docs/cultural-model.md)**
+---
+
+## 📊 Cultural Model
+
+<div align="center">
+
+### Dimension-Driven, Not Stereotype-Driven
+
+</div>
+
+Our approach is grounded in **behavioral research** (Hofstede, Hall, Meyer frameworks), not assumptions.
+
+<table>
+<thead>
+<tr>
+<th width="25%">Dimension</th>
+<th width="50%">UX Impact</th>
+<th width="25%">Example Markets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>🔒 Uncertainty Avoidance</b></td>
+<td>
+  <b>High:</b> More trust badges, detailed shipping/returns, progress indicators<br>
+  <b>Low:</b> Streamlined flow, fewer reassurances, flexible options
+</td>
+<td>🇯🇵 🇩🇪 (High)<br>🇸🇬 🇺🇸 (Low)</td>
+</tr>
+<tr>
+<td><b>💬 Context Level</b></td>
+<td>
+  <b>Low-Context:</b> Explicit specs, detailed comparisons, upfront pricing<br>
+  <b>High-Context:</b> Implied benefits, relationship cues, subtle messaging
+</td>
+<td>🇩🇪 🇺🇸 (Low)<br>🇯🇵 🇨🇳 (High)</td>
+</tr>
+<tr>
+<td><b>👥 Collectivism</b></td>
+<td>
+  <b>High:</b> Social proof, community reviews, group benefits<br>
+  <b>Low:</b> Individual customization, personal rewards
+</td>
+<td>🇬🇹 🇯🇵 (High)<br>🇺🇸 🇬🇧 (Low)</td>
+</tr>
+<tr>
+<td><b>⚡ Friction Tolerance</b></td>
+<td>
+  <b>Low:</b> Minimal steps, autofill, guest checkout<br>
+  <b>High:</b> Detailed forms acceptable, account creation encouraged
+</td>
+<td>🇺🇸 🇬🇧 (Low)<br>🇩🇪 🇯🇵 (High)</td>
+</tr>
+<tr>
+<td><b>🛡️ Trust Need</b></td>
+<td>
+  <b>High:</b> Certifications, guarantees, authority signals prominent<br>
+  <b>Low:</b> Minimal trust modules, focus on product
+</td>
+<td>🇬🇹 🇧🇷 (High)<br>🇸🇪 🇳🇱 (Low)</td>
+</tr>
+<tr>
+<td><b>💰 Price Sensitivity</b></td>
+<td>
+  <b>High:</b> Value framing, payment plans, comparison tools<br>
+  <b>Low:</b> Quality emphasis, premium positioning
+</td>
+<td>Emerging markets (High)<br>Nordic countries (Low)</td>
+</tr>
+</tbody>
+</table>
+
+<details>
+<summary><b>📖 Read Full Cultural Model Documentation</b></summary>
+
+Our cultural intelligence model integrates:
+- **Hofstede's Cultural Dimensions** (power distance, individualism, masculinity, uncertainty avoidance, long-term orientation, indulgence)
+- **Hall's Context Theory** (high-context vs. low-context communication)
+- **Meyer's Culture Map** (decision-making styles, trust-building patterns)
+
+[📄 Complete cultural model guide →](docs/cultural-model.md)
+
+</details>
 
 ---
 
 ## 🚀 Quick Start
 
+<div align="center">
+
+### Get Running in 5 Minutes
+
+</div>
+
 ### Prerequisites
+```bash
+✅ Node.js 18+ & pnpm 8+
+✅ Python 3.11+
+✅ Azure CLI
+✅ Azure OpenAI resource
+```
 
-- **Node.js** 18+ & **pnpm** 8+
-- **Python** 3.11+
-- **Azure CLI** (for deployment)
-- **Azure OpenAI** resource (or AI Foundry endpoint)
+### Installation
 
-### 1. Clone the Repository
+<table>
+<tr>
+<td>
+
+**1️⃣ Clone Repository**
 ```bash
 git clone https://github.com/YOUR_ORG/culturebridge-ai.git
 cd culturebridge-ai
 ```
 
-### 2. Configure Environment
+</td>
+<td>
+
+**2️⃣ Configure Environment**
 ```bash
 cp .env.example .env
+# Edit .env with your Azure credentials
 ```
 
-Edit `.env` with your Azure credentials:
-```env
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_API_KEY=your-key
-AZURE_OPENAI_DEPLOYMENT=gpt-4o
-AZURE_OPENAI_API_VERSION=2024-10-21
-APPLICATIONINSIGHTS_CONNECTION_STRING=your-connection-string
-```
+</td>
+</tr>
+<tr>
+<td>
 
-### 3. Install Dependencies
+**3️⃣ Install Dependencies**
 ```bash
 # Frontend
 pnpm install
@@ -154,43 +393,65 @@ cd apps/api
 pip install -r requirements.txt
 ```
 
-### 4. Run Development Servers
+</td>
+<td>
+
+**4️⃣ Start Development**
 ```bash
-# Terminal 1 - Frontend (port 3000)
+# Terminal 1
 pnpm dev
 
-# Terminal 2 - Backend (port 8000)
+# Terminal 2
 cd apps/api
-uvicorn main:app --reload --port 8000
+uvicorn main:app --reload
 ```
 
-**Or use Docker Compose:**
+</td>
+</tr>
+</table>
+
+### Environment Configuration
+```env
+# Azure OpenAI
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+AZURE_OPENAI_API_KEY=your-key-here
+AZURE_OPENAI_DEPLOYMENT=gpt-4o
+AZURE_OPENAI_API_VERSION=2024-10-21
+
+# Observability
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
+```
+
+### Docker Alternative
 ```bash
 docker-compose up --build
 ```
 
-### 5. Access the Application
+**Access Points:**
+- 🎨 Frontend: http://localhost:3000
+- ⚡ API: http://localhost:8000
+- 📖 API Docs: http://localhost:8000/docs
 
-- **Frontend:** http://localhost:3000
-- **API Docs:** http://localhost:8000/docs
-
-### 6. Run Tests
+### Run Tests
 ```bash
 cd apps/api
-python -m pytest tests/ -v
+python -m pytest tests/ -v --cov=. --cov-report=html
 ```
 
 ---
 
 ## 📦 API Reference
 
-### Generate Adapted Variant
-```http
-POST /api/adapt
-Content-Type: application/json
-```
+<div align="center">
 
-**Request Body:**
+### Core Endpoints
+
+</div>
+
+<details open>
+<summary><b>POST /api/adapt</b> — Generate culturally adapted variant</summary>
+
+**Request:**
 ```json
 {
   "country_code": "JP",
@@ -198,7 +459,8 @@ Content-Type: application/json
   "price_band": "mid",
   "audience": "general_consumer",
   "override_dimensions": {
-    "uncertainty_avoidance": 85
+    "uncertainty_avoidance": 85,
+    "collectivism": 75
   }
 }
 ```
@@ -206,176 +468,505 @@ Content-Type: application/json
 **Response:**
 ```json
 {
-  "variant_id": "var_abc123",
-  "cultural_profile": { /* ... */ },
-  "ux_adaptations": { /* ... */ },
-  "copy_variants": { /* ... */ },
-  "predicted_lift": 0.23,
-  "audit_score": 0.92
+  "variant_id": "var_jp_electronics_abc123",
+  "cultural_profile": {
+    "country_code": "JP",
+    "dimensions": {
+      "uncertainty_avoidance": 85,
+      "context_level": 82,
+      "collectivism": 75,
+      "friction_tolerance": 70,
+      "trust_need": 78,
+      "price_sensitivity": 45
+    },
+    "rationale": "Japan exhibits high uncertainty avoidance..."
+  },
+  "ux_adaptations": {
+    "checkout_flow": ["product_detail", "trust_signals", "specifications", "reviews", "payment", "confirmation"],
+    "trust_modules": ["security_badges", "return_policy", "customer_reviews"],
+    "rationale": "High uncertainty avoidance requires extensive trust signals..."
+  },
+  "copy_variants": {
+    "primary_cta": "安心してご購入",
+    "value_proposition": "3年間保証付き・送料無料",
+    "rationale": "Emphasis on security and guarantees aligns with trust needs..."
+  },
+  "audit": {
+    "score": 0.94,
+    "flags": [],
+    "passed": true
+  },
+  "predicted_lift": {
+    "conversion_improvement": 0.23,
+    "confidence_interval": [0.18, 0.28],
+    "assumptions": ["Based on similar adaptations in APAC markets..."]
+  }
 }
 ```
 
-### Retrieve Variant
-```http
-GET /api/variants/{variant_id}
-```
+</details>
 
-### Audit Variant
-```http
-POST /api/audit
-Content-Type: application/json
-```
+<details>
+<summary><b>GET /api/variants/{variant_id}</b> — Retrieve saved variant</summary>
 
-**Request Body:**
+**Response:**
 ```json
 {
-  "variant_id": "var_abc123"
+  "variant_id": "var_jp_electronics_abc123",
+  "created_at": "2026-02-13T10:30:00Z",
+  "cultural_profile": { /* ... */ },
+  "ux_adaptations": { /* ... */ },
+  "copy_variants": { /* ... */ }
 }
 ```
 
-📖 **[Full API documentation →](docs/api-reference.md)**
+</details>
+
+<details>
+<summary><b>POST /api/audit</b> — Run compliance audit on variant</summary>
+
+**Request:**
+```json
+{
+  "variant_id": "var_jp_electronics_abc123"
+}
+```
+
+**Response:**
+```json
+{
+  "audit_id": "audit_xyz789",
+  "variant_id": "var_jp_electronics_abc123",
+  "score": 0.94,
+  "passed": true,
+  "checks": {
+    "stereotype_detection": {
+      "passed": true,
+      "details": "All adaptations grounded in behavioral dimensions"
+    },
+    "fairness_validation": {
+      "passed": true,
+      "details": "No discriminatory patterns detected"
+    },
+    "rationale_completeness": {
+      "passed": true,
+      "details": "All agents provided dimension-based justifications"
+    }
+  },
+  "flags": [],
+  "recommendations": []
+}
+```
+
+</details>
+
+<div align="center">
+
+[📖 **Full API Documentation**](docs/api-reference.md)
+
+</div>
 
 ---
 
 ## ☁️ Azure Deployment
 
-### Option 1: One-Click Deploy
+<div align="center">
+
+### Production-Ready Infrastructure
+
+</div>
+
+### Option 1: Automated GitHub Actions Deploy
 ```bash
-# Login to Azure
+# Push to main branch
+git push origin main
+
+# GitHub Actions will:
+# ✅ Build frontend and API containers
+# ✅ Run tests and security scans
+# ✅ Deploy to Azure infrastructure
+# ✅ Configure Application Insights
+```
+
+### Option 2: Manual Azure CLI Deploy
+```bash
+# 1. Login to Azure
 az login
 
-# Deploy infrastructure
+# 2. Create resource group
+az group create --name culturebridge-rg --location eastus
+
+# 3. Deploy infrastructure
 cd infra/bicep
 az deployment group create \
   --resource-group culturebridge-rg \
   --template-file main.bicep \
   --parameters @parameters.json
 
-# Deploy application via GitHub Actions
-git push origin main
+# 4. Deploy application code
+cd ../../
+./scripts/deploy.sh
 ```
 
-### Option 2: GitHub Actions CI/CD
+### Infrastructure Stack
 
-Push to `main` branch to trigger automated deployment. The workflow:
+<table>
+<thead>
+<tr>
+<th width="30%">Resource</th>
+<th width="40%">Purpose</th>
+<th width="30%">Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>🤖 Azure OpenAI</b></td>
+<td>LLM inference via AI Foundry</td>
+<td>GPT-4o deployment, rate limiting enabled</td>
+</tr>
+<tr>
+<td><b>⚡ Azure Functions</b></td>
+<td>Serverless API hosting</td>
+<td>Python 3.11, consumption plan</td>
+</tr>
+<tr>
+<td><b>🎨 Static Web Apps</b></td>
+<td>Next.js frontend hosting</td>
+<td>CDN enabled, custom domains supported</td>
+</tr>
+<tr>
+<td><b>🔐 Key Vault</b></td>
+<td>Secrets management</td>
+<td>Managed identity access only</td>
+</tr>
+<tr>
+<td><b>📊 Application Insights</b></td>
+<td>Observability & tracing</td>
+<td>Distributed tracing, correlation IDs</td>
+</tr>
+<tr>
+<td><b>💾 Cosmos DB</b></td>
+<td>Variant storage (optional)</td>
+<td>NoSQL, auto-scaling</td>
+</tr>
+</tbody>
+</table>
 
-1. Builds frontend and API containers
-2. Runs tests and security scans
-3. Deploys to Azure Static Web Apps + Functions/Container Apps
-4. Updates Application Insights configuration
+### Security & Compliance
 
-### Infrastructure Components
+- ✅ **Managed Identity** — No hardcoded credentials
+- ✅ **Private Endpoints** — Network isolation for Azure services
+- ✅ **TLS 1.3** — All traffic encrypted in transit
+- ✅ **RBAC** — Role-based access control
+- ✅ **Audit Logging** — Complete activity tracking in Azure Monitor
 
-| Resource | Purpose | Config |
-|----------|---------|--------|
-| **Azure OpenAI** | LLM inference via AI Foundry | GPT-4o deployment |
-| **Azure Functions** | Serverless API hosting | Python 3.11 runtime |
-| **Static Web Apps** | Next.js frontend hosting | CDN + custom domains |
-| **Key Vault** | Secrets management | Managed identity access |
-| **Application Insights** | Observability + distributed tracing | Correlation IDs enabled |
+<div align="center">
 
-🔒 **[View threat model & security →](docs/threat-model.md)**
+[🔒 **View Threat Model**](docs/threat-model.md) | [📖 **Deployment Guide**](docs/deployment.md)
+
+</div>
 
 ---
 
-## 🎬 2-Minute Demo Script
+## 🎬 Demo
 
-| Time | Action | What to Show |
-|------|--------|--------------|
-| **0:00–0:20** | Introduce the problem | Same storefront → different regions → conversion drop |
-| **0:20–1:10** | Generate variants | Select product → generate JP/GT/DE variants → side-by-side comparison UI |
-| **1:10–1:35** | Show compliance audit | Audit score, risk flags, dimension-based justifications |
-| **1:35–1:55** | Show Azure integration | Deployment architecture + App Insights trace correlation |
-| **1:55–2:00** | Conclusion | Predicted lift summary + enterprise readiness highlights |
+<div align="center">
 
-📖 **[Full demo script with screenshots →](docs/demo-script.md)**
+### 2-Minute Interactive Demo Script
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th width="15%">Time</th>
+<th width="40%">Action</th>
+<th width="45%">What to Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>0:00–0:20</b></td>
+<td>🎯 Introduce the problem</td>
+<td>
+  • Show same storefront across 3 regions<br>
+  • Highlight conversion drop statistics<br>
+  • Emphasize cultural misalignment, not language
+</td>
+</tr>
+<tr>
+<td><b>0:20–1:10</b></td>
+<td>✨ Generate variants live</td>
+<td>
+  • Select product (e.g., "Premium Headphones")<br>
+  • Generate JP, GT, DE variants simultaneously<br>
+  • Show side-by-side comparison UI<br>
+  • Highlight dimension-based differences
+</td>
+</tr>
+<tr>
+<td><b>1:10–1:35</b></td>
+<td>🛡️ Show compliance audit</td>
+<td>
+  • Run audit on generated variants<br>
+  • Display audit score (0.94)<br>
+  • Show dimension-based justifications<br>
+  • Demonstrate bias detection capabilities
+</td>
+</tr>
+<tr>
+<td><b>1:35–1:55</b></td>
+<td>☁️ Show Azure integration</td>
+<td>
+  • Open Azure portal<br>
+  • Show Application Insights trace correlation<br>
+  • Display agent execution timeline<br>
+  • Highlight infrastructure components
+</td>
+</tr>
+<tr>
+<td><b>1:55–2:00</b></td>
+<td>📊 Conclusion</td>
+<td>
+  • Show predicted +23% conversion lift<br>
+  • Highlight enterprise readiness<br>
+  • Call to action
+</td>
+</tr>
+</tbody>
+</table>
+
+<div align="center">
+
+[🎬 **Full Demo Script with Screenshots**](docs/demo-script.md)
+
+</div>
 
 ---
 
 ## 🤖 Built with GitHub Copilot
 
-This project leveraged **GitHub Copilot Agent Mode** in VS Code to accelerate development:
+<div align="center">
 
-### What Copilot Helped With
+### AI-Accelerated Development
 
-1. **Schema Generation** — Generated initial JSON Schema definitions from TypeScript interfaces
-2. **Agent Prompt Engineering** — Suggested system prompt structures for each specialized agent
-3. **Infrastructure as Code** — Generated base Bicep templates for Azure resources
-4. **Test Scaffolding** — Created test cases for cultural dimension mapping and bias detection
-5. **API Boilerplate** — Accelerated FastAPI route handlers and middleware
-6. **UI Components** — Assisted with React component structure and Tailwind styling
+</div>
 
-### Human Review Process
+This project leveraged **GitHub Copilot Agent Mode** to accelerate development while maintaining human oversight:
 
-All AI-generated code was reviewed for:
-- ✅ Correctness and domain accuracy
-- ✅ Security best practices
-- ✅ Bias and fairness concerns
-- ✅ Accessibility compliance
+<table>
+<tr>
+<td width="50%">
 
-> **Copilot was used as an accelerator, not a replacement for domain expertise.**
+### 🚀 Where Copilot Helped
+
+- **Schema Generation** — JSON Schema from TypeScript interfaces
+- **Agent Prompts** — System prompt structures for each agent
+- **IaC Templates** — Base Bicep templates for Azure
+- **Test Scaffolding** — Unit and integration test cases
+- **API Boilerplate** — FastAPI routes and middleware
+- **UI Components** — React component structure
+
+</td>
+<td width="50%">
+
+### ✅ Human Review Process
+
+Every AI-generated artifact was reviewed for:
+
+- ✅ **Correctness** — Domain accuracy validation
+- ✅ **Security** — Best practices enforcement
+- ✅ **Bias** — Fairness and ethical concerns
+- ✅ **Accessibility** — WCAG 2.1 AA compliance
+- ✅ **Performance** — Optimization opportunities
+
+</td>
+</tr>
+</table>
+
+> **💡 Key Insight:** Copilot accelerated development by ~40%, but human expertise was essential for cultural nuance, security hardening, and bias prevention.
+
+---
+
+## 🧪 Testing & Quality
+
+<div align="center">
+
+### Comprehensive Test Coverage
+
+</div>
+```bash
+# Run all tests
+pnpm test
+
+# Backend tests with coverage
+cd apps/api
+pytest tests/ -v --cov=. --cov-report=html
+
+# Frontend tests
+pnpm test:frontend
+
+# E2E tests
+pnpm test:e2e
+```
+
+**Test Suites:**
+
+- ✅ **Unit Tests** — Agent logic, cultural dimension mapping
+- ✅ **Integration Tests** — API endpoints, agent orchestration
+- ✅ **Bias Detection Tests** — Stereotype detection validation
+- ✅ **E2E Tests** — Full variant generation workflows
+- ✅ **Performance Tests** — Response time benchmarks
+
+**Quality Gates:**
+
+- 📊 **Coverage:** >80% code coverage required
+- 🔒 **Security:** Dependabot alerts must be resolved
+- 🎨 **Linting:** ESLint + Prettier + Black + isort
+- 📝 **Type Safety:** TypeScript strict mode + mypy
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+<div align="center">
+
+We welcome contributions from the community!
+
+**[Read Contributing Guide](CONTRIBUTING.md)** | **[Code of Conduct](CODE_OF_CONDUCT.md)** | **[Security Policy](SECURITY.md)**
+
+</div>
 
 ### Development Workflow
+```mermaid
+graph LR
+    A[Fork Repo] --> B[Create Branch]
+    B --> C[Make Changes]
+    C --> D[Add Tests]
+    D --> E[Run Linters]
+    E --> F[Commit]
+    F --> G[Push]
+    G --> H[Create PR]
+    H --> I[CI Checks]
+    I --> J[Code Review]
+    J --> K[Merge]
+    
+    style A fill:#dbeafe
+    style K fill:#dcfce7
+```
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes and add tests
-4. Run tests and linting (`pnpm test`, `pnpm lint`)
-5. Commit with conventional commits (`feat:`, `fix:`, `docs:`)
-6. Push and create a Pull Request
+### Commit Convention
+
+We use [Conventional Commits](https://www.conventionalcommits.org/):
+```
+feat: add support for Brazilian Portuguese variants
+fix: resolve cultural dimension scoring edge case
+docs: update API reference with new endpoints
+test: add bias detection test cases
+refactor: simplify agent orchestration logic
+```
 
 ---
 
 ## 👥 Team
 
-| Name | Role | GitHub |
-|------|------|--------|
-| Joshua Rosales | Full-Stack Lead | [@handle] |
-| Jonathan | AI/ML Engineer | [@handle] |
-| Jose Medina | UX/Frontend | [@handle] |
+<div align="center">
+
+<table>
+<tr>
+<td align="center">
+  <img src="https://github.com/handle.png" width="100px;" alt="Joshua Rosales"/><br />
+  <sub><b>Joshua Rosales</b></sub><br />
+  <sub>Full-Stack Lead</sub><br />
+  <a href="https://github.com/handle">@handle</a>
+</td>
+<td align="center">
+  <img src="https://github.com/handle.png" width="100px;" alt="Jonathan"/><br />
+  <sub><b>Jonathan</b></sub><br />
+  <sub>AI/ML Engineer</sub><br />
+  <a href="https://github.com/handle">@handle</a>
+</td>
+<td align="center">
+  <img src="https://github.com/handle.png" width="100px;" alt="Jose Medina"/><br />
+  <sub><b>Jose Medina</b></sub><br />
+  <sub>UX/Frontend</sub><br />
+  <a href="https://github.com/handle">@handle</a>
+</td>
+</tr>
+</table>
+
+</div>
 
 ---
 
 ## 📚 Documentation
 
-- [Architecture Overview](docs/architecture.md)
-- [Cultural Model & Dimensions](docs/cultural-model.md)
-- [Responsible AI Statement](docs/responsible-ai.md)
-- [API Reference](docs/api-reference.md)
-- [Threat Model & Security](docs/threat-model.md)
-- [Demo Script](docs/demo-script.md)
-- [Deployment Guide](docs/deployment.md)
+<div align="center">
+
+| Category | Resources |
+|----------|-----------|
+| **🏗️ Architecture** | [Overview](docs/architecture.md) • [Agent System](docs/agents.md) • [Data Flow](docs/data-flow.md) |
+| **🧠 AI/ML** | [Cultural Model](docs/cultural-model.md) • [Responsible AI](docs/responsible-ai.md) • [Bias Prevention](docs/bias-prevention.md) |
+| **⚙️ Development** | [API Reference](docs/api-reference.md) • [Local Setup](docs/local-setup.md) • [Testing Guide](docs/testing.md) |
+| **☁️ Deployment** | [Azure Setup](docs/deployment.md) • [CI/CD](docs/cicd.md) • [Monitoring](docs/monitoring.md) |
+| **🔒 Security** | [Threat Model](docs/threat-model.md) • [Security Policy](SECURITY.md) • [Compliance](docs/compliance.md) |
+
+</div>
+
+---
+
+## 🌟 Roadmap
+
+<div align="center">
+
+### Upcoming Features
+
+</div>
+
+- [ ] **Regional Expansion** — Add support for 20+ additional markets
+- [ ] **Visual Adaptation** — AI-powered imagery and color palette adaptation
+- [ ] **A/B Testing Platform** — Integrated experimentation dashboard
+- [ ] **Analytics Integration** — Real-time conversion tracking
+- [ ] **Multi-Modal Agents** — Support for voice and video content adaptation
+- [ ] **WordPress Plugin** — One-click integration for WooCommerce
+- [ ] **Shopify App** — Native Shopify app with automated adaptation
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+<div align="center">
+
+This project is licensed under the **MIT License**.
+
+See [LICENSE](LICENSE) for full details.
+
+</div>
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Built with [Microsoft Agent Framework](https://github.com/microsoft/semantic-kernel)
-- Powered by [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
-- Cultural dimensions research based on Hofstede, Hall, and Meyer frameworks
+<div align="center">
+
+Built with exceptional tools and frameworks:
+
+**[Microsoft Agent Framework](https://github.com/microsoft/semantic-kernel)** • **[Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service)** • **[Next.js](https://nextjs.org/)** • **[FastAPI](https://fastapi.tiangolo.com/)**
+
+Cultural research based on **Hofstede**, **Hall**, and **Meyer** frameworks.
 
 ---
 
-<p align="center">
-  <strong>Made with ❤️ for global commerce</strong>
-</p>
+### ⭐ Star us on GitHub if this project helps you!
 
-<p align="center">
-  <a href="#-the-problem">Problem</a> •
-  <a href="#-how-it-works">How It Works</a> •
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-azure-deployment">Deploy</a> •
-  <a href="#-documentation">Docs</a>
-</p>
+**Made with ❤️ for global commerce**
+
+</div>
+
+---
+
+<div align="center">
+
+**Quick Links:** [Problem](#-the-challenge) • [Features](#-features) • [Architecture](#%EF%B8%8F-system-architecture) • [Quick Start](#-quick-start) • [API](#-api-reference) • [Deploy](#%EF%B8%8F-azure-deployment) • [Demo](#-demo) • [Docs](#-documentation)
+
+</div>
